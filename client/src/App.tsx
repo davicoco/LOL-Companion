@@ -92,6 +92,7 @@ function App() {
     setMatches(matchHistory.matches);
   }
 
+  const soloRank = rankedData.find( q => q.queueType === "RANKED_SOLO_5x5");
   return (
     <>
       <h1>LaneCounter</h1>
@@ -107,14 +108,14 @@ function App() {
       }}>Sök</button>
       {uiErrorMessage && <p>{uiErrorMessage}</p>}
 
-      {rankedData.length > 0 && (
+      {soloRank && (
         <div>
-          <p>Queue: {rankedData[0].queueType}</p>
-          <p>Tier: {rankedData[0].tier}</p>
-          <p>Rank: {rankedData[0].rank}</p>
-          <p>LeaguePoints: {rankedData[0].leaguePoints}</p>
-          <p>Wins: {rankedData[0].wins}</p>
-          <p>Losses: {rankedData[0].losses}</p>
+          <p>Queue: {soloRank.queueType}</p>
+          <p>Tier: {soloRank.tier}</p>
+          <p>Rank: {soloRank.rank}</p>
+          <p>LeaguePoints: {soloRank.leaguePoints}</p>
+          <p>Wins: {soloRank.wins}</p>
+          <p>Losses: {soloRank.losses}</p>
         </div>
       )}
 
