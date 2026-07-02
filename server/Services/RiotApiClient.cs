@@ -34,7 +34,7 @@ public class RiotApiClient
         var response = await _httpClient.GetAsync(url);
         if (!response.IsSuccessStatusCode)
         {
-            return  [];
+            return [];
         }
         var responseBody = await response.Content.ReadAsStringAsync();
         var playerEntries = JsonSerializer.Deserialize<List<LeagueEntryDto>>(responseBody);
@@ -46,9 +46,9 @@ public class RiotApiClient
 
     }
 
-    public async Task<List<string>> GetMatchIdsAsync(string puuid)
+    public async Task<List<string>> GetMatchIdsAsync(string puuid, int queueId)
     {
-        var url = $"https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/{puuid}/ids";
+        var url = $"https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/{puuid}/ids?queue={queueId}";
         var response = await _httpClient.GetAsync(url);
         if (!response.IsSuccessStatusCode)
         {
@@ -64,16 +64,16 @@ public class RiotApiClient
     }
 
     public async Task<MatchDto?> GetMatchInfoAsync(string matchId)
-    {      
-                var url = $"https://europe.api.riotgames.com/lol/match/v5/matches/{matchId}";
-                var response = await _httpClient.GetAsync(url);
-                if (!response.IsSuccessStatusCode)
-                {
-                    return null;
-                }
-                var responseBody = await response.Content.ReadAsStringAsync();
-                var match = JsonSerializer.Deserialize<MatchDto>(responseBody);
-                return match;
+    {
+        var url = $"https://europe.api.riotgames.com/lol/match/v5/matches/{matchId}";
+        var response = await _httpClient.GetAsync(url);
+        if (!response.IsSuccessStatusCode)
+        {
+            return null;
+        }
+        var responseBody = await response.Content.ReadAsStringAsync();
+        var match = JsonSerializer.Deserialize<MatchDto>(responseBody);
+        return match;
     }
 
     public async Task<List<MatchDto>> GetMatchesInfoAsync(List<string> matchIds)

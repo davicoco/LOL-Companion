@@ -25,7 +25,9 @@ public class MatchController : ControllerBase
         {
             return NotFound();
         }
-        var matchIds = await _riotApiClient.GetMatchIdsAsync(puuid);
+        const int rankedSoloQueueId = 420;
+
+        var matchIds = await _riotApiClient.GetMatchIdsAsync(puuid,rankedSoloQueueId);
 
         var matches = await _riotApiClient.GetMatchesInfoAsync(matchIds);
 
