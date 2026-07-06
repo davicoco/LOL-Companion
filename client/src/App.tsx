@@ -22,6 +22,7 @@ interface Participant {
   deaths: number;
   assists: number;
   win: boolean;
+  gameEndedInEarlySurrender: boolean
 }
 
 interface Info {
@@ -92,7 +93,8 @@ function App() {
     setMatches(matchHistory.matches);
   }
 
-  const soloRank = rankedData.find( q => q.queueType === "RANKED_SOLO_5x5");
+  const soloRank = rankedData.find(q => q.queueType === "RANKED_SOLO_5x5");
+
   return (
     <>
       <h1>LaneCounter</h1>
@@ -142,10 +144,18 @@ function App() {
         <div className="match-list">
           {matches.map((match: Match, index: number) => {
             const searchedPlayer = match.info.participants.find((p) => p.puuid === myPuuid);
+            let cardClass = "";
+            if (searchedPlayer?.gameEndedInEarlySurrender) {
+              cardClass = "match-card remake"
+            } else if (searchedPlayer?.win) {
+              cardClass = "match-card win"
+            } else {
+              cardClass = "match-card loss"
+            }
             return (
               <div
                 key={index}
-                className={searchedPlayer?.win ? "match-card win" : "match-card loss"}
+                className={cardClass}
               >
                 <div className="champion">
                   <p>Champion: {searchedPlayer?.championName}</p>

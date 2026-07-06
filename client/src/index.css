@@ -149,6 +149,10 @@ button {
   border-left: 4px solid #e84057;
   border-right: 4px solid #e84057;
 }
+.remake{
+  border-left: 4px solid #5a5a5a;
+  border-right: 4px solid #5a5a5a;
+}
 
 .stats {
   display: flex;
