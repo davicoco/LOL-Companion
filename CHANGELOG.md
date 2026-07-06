@@ -11,14 +11,23 @@ lives in the commit log.
 ## [Unreleased]
 
 ### Added
+### Changed
+### Fixed 
+### Removed
+
+## [1.2.0] - 2026-07-06
+
+### Added
 - Ranked remakes now excluded from stats calculations
 - Played-match and remake counts now shown in UI
+- Remake card color
 
 ### Changed
 - Match history showed all types of queue-matches and now filtered to only show Ranked SoloQueue 5 v 5-matches
 
 ### Fixed
 - UI now shows Ranked SoloQueue 5 v 5 LeagueEntry instead of first LeagueEntry
+- Remake matches no longer shown as wins
 
 ### Removed
 - Unused Controller endpoint
