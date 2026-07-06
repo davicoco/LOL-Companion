@@ -13,6 +13,7 @@ lives in the commit log.
 ### Added
 ### Changed
 ### Fixed 
+- Show "Remake" label on remake match cards
 ### Removed
 
 ## [1.2.0] - 2026-07-06
