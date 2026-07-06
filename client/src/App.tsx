@@ -145,12 +145,16 @@ function App() {
           {matches.map((match: Match, index: number) => {
             const searchedPlayer = match.info.participants.find((p) => p.puuid === myPuuid);
             let cardClass = "";
+            let winLossRemake ="";
             if (searchedPlayer?.gameEndedInEarlySurrender) {
               cardClass = "match-card remake"
+              winLossRemake = "Remake"
             } else if (searchedPlayer?.win) {
               cardClass = "match-card win"
+              winLossRemake = "Win"
             } else {
               cardClass = "match-card loss"
+              winLossRemake = "Loss"
             }
             return (
               <div
@@ -164,7 +168,7 @@ function App() {
                   <p>Kills: {searchedPlayer?.kills}</p>
                   <p>Deaths: {searchedPlayer?.deaths}</p>
                   <p>Assists: {searchedPlayer?.assists}</p>
-                  <p>Win/loss: {searchedPlayer?.win ? "Win" : "Loss"}</p>
+                  <p>Win/loss: {winLossRemake}</p>
                 </div>
               </div>)
           })}
